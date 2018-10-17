@@ -1,5 +1,7 @@
 package me.brucephillips.threading.sec02;
 
+import java.util.Random;
+
 public class RealHelloWorldRunnableWithSleep
 {
 	public static class Greeter implements Runnable
@@ -15,7 +17,10 @@ public class RealHelloWorldRunnableWithSleep
 		{
 			try
 			{
-				Thread.sleep(10000);
+				Random r = new Random();
+				int sleepTime = r.ints(1, 10).findFirst().getAsInt();
+				System.out.format("%s thread about to sleep for %d seconds\n", country, sleepTime);
+				Thread.sleep(sleepTime*1000);
 			}
 			catch (InterruptedException e)
 			{
